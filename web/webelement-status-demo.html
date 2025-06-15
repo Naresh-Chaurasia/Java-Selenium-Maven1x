@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebElement Status Demo</title>
+  </head>
+  <body>
+    <h2>WebElement Status Demo</h2>
+
+    <!-- isDisplayed() -->
+    Hello:<input type="text" id="visibleInput" placeholder="Visible input" />
+    <br />
+
+    Hidden::<input
+      type="text"
+      id="hiddenInput"
+      style="display: none"
+      value="Hidden"
+    />
+
+    <br />
+
+    <!-- isEnabled() -->
+    <input type="text" id="enabledInput" placeholder="Enabled input" />
+    <input type="text" id="disabledInput" disabled value="This is Disabled" />
+
+    <br /><br />
+
+    <!-- isSelected() -->
+    <input type="checkbox" id="checkbox1" /> I agree<br />
+    <input type="radio" name="gender" id="radioMale" /> Male<br />
+    <input type="radio" name="gender" id="radioFemale" checked /> Female<br />
+  </body>
+</html>

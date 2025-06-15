@@ -1,0 +1,26 @@
+
+= Selenium Automation
+:toc: right
+:toclevels:
+:sectnums:
+
+- https://googlechromelabs.github.io/chrome-for-testing/#stable
+- Java 17
+- Java Selenium (Starting with 4.6, it should happend automatically)
+- /Users/nareshchaurasia/.cache/selenium/chromedriver
+- https://www.selenium.dev/documentation/webdriver/
+- https://www.browserstack.com/guide/architecture-of-selenium-webdriver
+
+----
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.11.0</version> <!-- Use the latest version -->
+</dependency>
+----
+
+---
+
+That's a great idea! Giving students hands-on mini projects after teaching them Selenium basics (like `findElement`, `click`, `sendKeys`, handling dropdowns, etc.) is a powerful way to reinforce learning.
+
+---

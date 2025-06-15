@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Selenium Actions Demo</title>
+    <style>
+      #menu,
+      #rightClickBtn,
+      #doubleClickBox,
+      #drag,
+      #drop,
+      #clickHold {
+        margin: 20px;
+        padding: 20px;
+        width: 200px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        border: 1px solid black;
+      }
+      #submenu {
+        display: none;
+        background-color: lightgray;
+        padding: 10px;
+      }
+      #drag {
+        background-color: #2196f3;
+        color: white;
+      }
+      #drop {
+        background-color: #4caf50;
+        color: white;
+        height: 60px;
+      }
+      #clickHold {
+        background-color: #f44336;
+        color: white;
+      }
+      #doubleClickBox {
+        background-color: #ffeb3b;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Selenium Actions Class Demo</h2>
+
+    <!-- Mouse Hover -->
+    <div id="menu">
+      Hover over me!
+      <div id="submenu">Sub Menu Appears!</div>
+    </div>
+
+    <!-- Right Click -->
+    <button id="rightClickBtn">Right Click Me</button>
+
+    <!-- Double Click -->
+    <div id="doubleClickBox">Double Click Me</div>
+
+    <!-- Drag and Drop -->
+    <div id="drag" draggable="true">Drag Me</div>
+    <div id="drop">Drop Here</div>
+
+    <!-- Click and Hold -->
+    <div id="clickHold">Click and Hold Me</div>
+
+    <script>
+      document.getElementById("menu").onmouseover = function () {
+        document.getElementById("submenu").style.display = "block";
+      };
+
+      // Optional: log actions to console
+      document
+        .getElementById("rightClickBtn")
+        .addEventListener("contextmenu", function (e) {
+          console.log("Right-clicked!");
+          e.preventDefault();
+        });
+
+      document.getElementById("doubleClickBox").ondblclick = function () {
+        alert("Double Clicked!");
+      };
+    </script>
+  </body>
+</html>
