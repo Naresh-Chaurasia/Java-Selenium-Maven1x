@@ -22,7 +22,7 @@ public class ExcelReadTest {
     }
 
     @Test
-    void testReadExcel() throws IOException {
+    void testReadExcel() {
         try (FileInputStream fis = new FileInputStream(excelPath);
                 Workbook workbook = new XSSFWorkbook(dir + "/sample.xlsx")) {
 
@@ -47,6 +47,13 @@ public class ExcelReadTest {
                 names.add(sheet.getRow(i).getCell(0).getStringCellValue());
             }
             assertEquals(List.of("Alice", "Bob"), names);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("IOException occurred: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail("Unexpected exception: " + e.getMessage());
         }
     }
 }
