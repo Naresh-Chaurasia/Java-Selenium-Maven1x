@@ -25,7 +25,7 @@ public class RegisterPage {
 
     // Actions
     public void enterFirstName(String firstName) {
-        driver.findElement(firstNameInput).clear();
+        driver.findElement(By.id("firstName")).clear();
         driver.findElement(firstNameInput).sendKeys(firstName);
     }
 
