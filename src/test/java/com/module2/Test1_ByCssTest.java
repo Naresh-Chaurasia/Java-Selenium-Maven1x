@@ -22,7 +22,6 @@ public class Test1_ByCssTest {
         driver.get(PREFIX + "savings.html");
         var datePicker = driver.findElement(By.cssSelector("#deposit"));
         datePicker.sendKeys("Deposit Amount 1");
-
     }
 
     @Test
@@ -44,7 +43,5 @@ public class Test1_ByCssTest {
         datePicker.sendKeys("10/12/2023");
 
     }
-
-   
 
 }
