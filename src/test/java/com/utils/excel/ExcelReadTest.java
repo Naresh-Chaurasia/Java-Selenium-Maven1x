@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ExcelReadTest {
 
-    static String excelPath = "src/test/resources/sample.xlsx";
     String dir = System.getProperty("user.dir") + "/src/test/resources";
+    String excelPath = System.getProperty("user.dir") + "/src/test/resources/sample.xlsx";
 
     @Test
     void testRead() {
@@ -22,13 +22,35 @@ public class ExcelReadTest {
     }
 
     @Test
-    void testReadExcel() {
-        try (FileInputStream fis = new FileInputStream(excelPath);
-                Workbook workbook = new XSSFWorkbook(dir + "/sample.xlsx")) {
+    void testOpenWorkbook() {
+        FileInputStream fis = null;
+        Workbook workbook = null;
+        try {
+            fis = new FileInputStream(excelPath);
+            workbook = new XSSFWorkbook(fis);
+            assertNotNull(workbook);
+        } catch (IOException e) {
+            fail("IOException occurred: " + e.getMessage());
+        } finally {
+            try {
+                if (workbook != null)
+                    workbook.close();
+                if (fis != null)
+                    fis.close();
+            } catch (IOException e) {
+                // ignore
+            }
+        }
+    }
 
+    @Test
+    void testReadFirstRow() {
+        FileInputStream fis = null;
+        Workbook workbook = null;
+        try {
+            fis = new FileInputStream(excelPath);
+            workbook = new XSSFWorkbook(fis);
             Sheet sheet = workbook.getSheetAt(0);
-
-            // Read a row (first row)
             Row row = sheet.getRow(0);
             assertNotNull(row);
             List<String> rowValues = new ArrayList<>();
@@ -36,24 +58,91 @@ public class ExcelReadTest {
                 rowValues.add(cell.getStringCellValue());
             }
             assertEquals(List.of("Name", "Age", "City"), rowValues);
+        } catch (IOException e) {
+            fail("IOException occurred: " + e.getMessage());
+        } finally {
+            try {
+                if (workbook != null)
+                    workbook.close();
+                if (fis != null)
+                    fis.close();
+            } catch (IOException e) {
+                // ignore
+            }
+        }
+    }
 
-            // Read a cell (B2, which is Age of Alice)
-            Cell cell = sheet.getRow(1).getCell(1);
+    @Test
+    void testReadSingleCell() {
+        FileInputStream fis = null;
+        Workbook workbook = null;
+        try {
+            fis = new FileInputStream(excelPath);
+            workbook = new XSSFWorkbook(fis);
+            Sheet sheet = workbook.getSheetAt(0);
+            Cell cell = sheet.getRow(1).getCell(1); // B2: Age of Alice
             assertEquals(30, (int) cell.getNumericCellValue());
+        } catch (IOException e) {
+            fail("IOException occurred: " + e.getMessage());
+        } finally {
+            try {
+                if (workbook != null)
+                    workbook.close();
+                if (fis != null)
+                    fis.close();
+            } catch (IOException e) {
+                // ignore
+            }
+        }
+    }
 
-            // Read a column (all names)
+    @Test
+    void testReadColumn() {
+        FileInputStream fis = null;
+        Workbook workbook = null;
+        try {
+            fis = new FileInputStream(excelPath);
+            workbook = new XSSFWorkbook(fis);
+            Sheet sheet = workbook.getSheetAt(0);
             List<String> names = new ArrayList<>();
             for (int i = 1; i <= 2; i++) {
                 names.add(sheet.getRow(i).getCell(0).getStringCellValue());
             }
             assertEquals(List.of("Alice", "Bob"), names);
-
         } catch (IOException e) {
-            e.printStackTrace();
             fail("IOException occurred: " + e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail("Unexpected exception: " + e.getMessage());
+        } finally {
+            try {
+                if (workbook != null)
+                    workbook.close();
+                if (fis != null)
+                    fis.close();
+            } catch (IOException e) {
+                // ignore
+            }
+        }
+    }
+
+    @Test
+    void testSheetName() {
+        FileInputStream fis = null;
+        Workbook workbook = null;
+        try {
+            fis = new FileInputStream(excelPath);
+            workbook = new XSSFWorkbook(fis);
+            String sheetName = workbook.getSheetName(0);
+            assertNotNull(sheetName);
+        } catch (IOException e) {
+            fail("IOException occurred: " + e.getMessage());
+        } finally {
+            try {
+                if (workbook != null)
+                    workbook.close();
+                if (fis != null)
+                    fis.close();
+            } catch (IOException e) {
+                // ignore
+            }
         }
     }
 }
