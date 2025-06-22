@@ -1,27 +1,38 @@
 package com.framework;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class ReadTextFile {
 
     public static void main(String[] args) {
+
+        System.out.println("System.getProperty(\"user.dir\"): " + System.getProperty("user.dir"));
+
         String filePath = System.getProperty("user.dir") + "/src/test/resources/sample.txt";
-        FileInputStream fis = null;
+
+        System.out.println("Reading file: " + filePath);
+
+        BufferedReader reader = null;
         try {
-            fis = new FileInputStream(filePath);
-            int ch;
-            while ((ch = fis.read()) != -1) {
-                System.out.print((char) ch);
+
+            // Create a BufferedReader to read the file line by line
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
+            String line;
+            // Read each line of the file
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
             }
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         } finally {
             try {
-                if (fis != null)
-                    fis.close();
+                reader.close();
             } catch (IOException e) {
-                // ignore
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
     }
