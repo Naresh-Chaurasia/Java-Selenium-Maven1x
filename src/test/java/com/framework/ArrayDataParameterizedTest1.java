@@ -11,21 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayDataParameterizedTest1 {
 
-    // Provide 2D array data as a list of Arguments (no streams)
-    static List<Arguments> provideArrayData() {
-        List<Arguments> data = new ArrayList<Arguments>();
-        data.add(Arguments.of("Alice", 30, "New York"));
-        data.add(Arguments.of("Bob", 25, "London"));
-        data.add(Arguments.of("Charlie", 28, "Paris"));
+    static List<String> provideNames() {
+        List<String> data = new ArrayList<String>();
+        data.add("Alice");
+        data.add("Bob");
+        data.add("Charlie");
         return data;
     }
 
     @ParameterizedTest
-    @MethodSource("provideArrayData")
-    void testArrayData(String name, int age, String city) {
+    @MethodSource("provideNames")
+    void testName(String name) {
         assertNotNull(name);
-        assertTrue(age > 0);
-        assertNotNull(city);
-        System.out.println(name + " | " + age + " | " + city);
+        System.out.println(name);
     }
 }

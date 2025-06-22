@@ -12,18 +12,17 @@ public class ReadPropertiesTest {
 
     @Test
     void testReadPropertiesFile() {
-       
-       
+
         String filePath = System.getProperty("user.dir") + "/src/test/resources/sample.properties";
-      
-      
+
         Properties props = new Properties();
-      
-      
+
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(filePath);
             props.load(fis);
+
+            System.out.println(props.getProperty("username"));
 
             // Example assertions (adjust keys as per your properties file)
             assertEquals("admin", props.getProperty("username"));
