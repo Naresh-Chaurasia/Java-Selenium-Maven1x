@@ -1,4 +1,4 @@
-package com.utils.excel;
+package com.framework;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,8 +12,14 @@ public class ReadPropertiesTest {
 
     @Test
     void testReadPropertiesFile() {
+       
+       
         String filePath = System.getProperty("user.dir") + "/src/test/resources/sample.properties";
+      
+      
         Properties props = new Properties();
+      
+      
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(filePath);
