@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ArrayDataParameterizedTest1 {
+public class ParameterizedTest04 {
 
     int count = 0;
 
@@ -21,6 +21,13 @@ public class ArrayDataParameterizedTest1 {
         return data;
     }
 
+    // The testName method will be called three times—once for each element in the
+    // list ("Alice", "Bob", "Charlie").
+    // However, the value of count will always be 1 in each test execution, because
+    // JUnit creates a new instance of ArrayDataParameterizedTest1 for each test
+    // method invocation.
+    // So, count is initialized to 0 each time, incremented to 1, and then the test
+    // ends.
     @ParameterizedTest
     @MethodSource("provideNames")
     void testName(String name) {

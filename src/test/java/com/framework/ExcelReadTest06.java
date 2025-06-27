@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ExcelReadTest {
+public class ExcelReadTest06 {
 
     String dir = System.getProperty("user.dir") + "/src/test/resources";
     String excelPath = System.getProperty("user.dir") + "/src/test/resources/sample.xlsx";

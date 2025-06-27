@@ -8,7 +8,7 @@ import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ReadPropertiesTest {
+public class ReadPropertiesTest02 {
 
     @Test
     void testReadPropertiesFile() {

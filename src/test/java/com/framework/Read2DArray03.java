@@ -1,6 +1,6 @@
 package com.framework;
 
-public class Read2DArray {
+public class Read2DArray03 {
     public static void main(String[] args) {
         String[][] data = {
                 { "Alice", "30", "New York" },

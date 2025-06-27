@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ArrayDataParameterizedTest2 {
+public class ParameterizedTest07 {
 
     // Provide 2D array data from Excel as a list of Arguments
     static List<Arguments> provideArrayData() {
