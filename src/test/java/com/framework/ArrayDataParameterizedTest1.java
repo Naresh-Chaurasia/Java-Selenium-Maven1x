@@ -11,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayDataParameterizedTest1 {
 
+    int count = 0;
+
     static List<String> provideNames() {
         List<String> data = new ArrayList<String>();
         data.add("Alice");
@@ -22,6 +24,10 @@ public class ArrayDataParameterizedTest1 {
     @ParameterizedTest
     @MethodSource("provideNames")
     void testName(String name) {
+
+        count = count + 1;
+        System.out.println("Test count: " + count);
+
         assertNotNull(name);
         System.out.println(name);
     }
