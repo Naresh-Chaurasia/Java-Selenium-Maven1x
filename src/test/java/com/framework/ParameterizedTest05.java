@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ParameterizedTest05 {
 
     static List<Arguments> providePersonData() {
+
+        // Map -> List
+        // data.add(Arguments.of("key", "New York"));
         List<Arguments> data = new ArrayList<Arguments>();
         data.add(Arguments.of("Alice", 30, "New York"));
         data.add(Arguments.of("Bob", 25, "London"));

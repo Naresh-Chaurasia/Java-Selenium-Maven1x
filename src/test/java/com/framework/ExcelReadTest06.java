@@ -56,6 +56,7 @@ public class ExcelReadTest06 {
             List<String> rowValues = new ArrayList<>();
             for (Cell cell : row) {
                 rowValues.add(cell.getStringCellValue());
+                System.out.print(cell.getStringCellValue() + " ");
             }
             assertEquals(List.of("Name", "Age", "City"), rowValues);
         } catch (IOException e) {

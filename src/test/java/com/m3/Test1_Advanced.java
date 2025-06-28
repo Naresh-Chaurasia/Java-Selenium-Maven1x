@@ -46,6 +46,13 @@ public class Test1_Advanced {
 
     @Test
     @Order(5)
+    /**
+     * Purpose: Sometimes, Selenium’s standard API can’t interact with certain
+     * elements or perform actions (like scrolling, manipulating DOM, etc.).
+     * JavascriptExecutor lets you run raw JavaScript to overcome these limitations.
+     * Usage: You typically cast your WebDriver instance to JavascriptExecutor and
+     * then call executeScript or executeAsyncScript
+     */
     public void testScrollDownByPixels() {
         DemoHelper.pause();
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 500)");
