@@ -16,6 +16,12 @@ public class ReadTextFile01 {
         System.out.println("Reading file: " + filePath);
 
         BufferedReader reader = null;
+
+        // Checked Exception: IOException
+        // Unchecked Exception: NullPointerException, ArrayIndexOutOfBoundsException,
+        // ClassCastException
+        // Runtime Exception: ArithmeticException, IllegalArgumentException,
+        // IllegalStateException
         try {
 
             // Create a BufferedReader to read the file line by line

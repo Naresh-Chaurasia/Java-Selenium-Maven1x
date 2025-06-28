@@ -11,9 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ParameterizedTest04 {
 
-    int count = 0;
-
-    static List<String> provideNames() {
+    static List<String> provideNames1() {
         List<String> data = new ArrayList<String>();
         data.add("Alice");
         data.add("Bob");
@@ -21,19 +19,25 @@ public class ParameterizedTest04 {
         return data;
     }
 
-    // The testName method will be called three times—once for each element in the
-    // list ("Alice", "Bob", "Charlie").
-    // However, the value of count will always be 1 in each test execution, because
-    // JUnit creates a new instance of ArrayDataParameterizedTest1 for each test
-    // method invocation.
-    // So, count is initialized to 0 each time, incremented to 1, and then the test
-    // ends.
-    @ParameterizedTest
-    @MethodSource("provideNames")
-    void testName(String name) {
+    static List<String> provideNames2() {
+        List<String> data = new ArrayList<String>();
+        data.add("Alice2");
+        data.add("Bob2");
+        data.add("Charlie2");
+        return data;
+    }
 
-        count = count + 1;
-        System.out.println("Test count: " + count);
+    @ParameterizedTest
+    @MethodSource("provideNames1")
+    void testName1(String name) {
+
+        assertNotNull(name);
+        System.out.println(name);
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideNames2")
+    void testName2(String name) {
 
         assertNotNull(name);
         System.out.println(name);
