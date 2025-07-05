@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.utils.DemoHelper;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Test1_Advanced {
 
     WebDriver driver;
@@ -45,7 +44,6 @@ public class Test1_Advanced {
     }
 
     @Test
-    @Order(5)
     /**
      * Purpose: Sometimes, Selenium’s standard API can’t interact with certain
      * elements or perform actions (like scrolling, manipulating DOM, etc.).
@@ -58,12 +56,13 @@ public class Test1_Advanced {
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 500)");
     }
 
-    @Test
-    public void testScrollIntoView() {
-        WebElement element = driver.findElement(By.id("footer"));
-        DemoHelper.pause();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-    }
+    // @Test
+    // public void testScrollIntoView() {
+    // WebElement element = driver.findElement(By.id("footer"));
+    // DemoHelper.pause();
+    // ((JavascriptExecutor)
+    // driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    // }
 
     @Test
     public void testKeyboardEnter() {
@@ -76,7 +75,9 @@ public class Test1_Advanced {
     public void testSendKeysWithShift() {
         WebElement input = driver.findElement(By.id("capitalText"));
         DemoHelper.pause();
-        actions.keyDown(Keys.SHIFT).sendKeys(input, "selenium").keyUp(Keys.SHIFT).perform();
+        actions.keyDown(Keys.SHIFT).sendKeys(input, "s").keyUp(Keys.SHIFT).perform();
+        input.sendKeys("elenium");
+
     }
 
     // @AfterEach

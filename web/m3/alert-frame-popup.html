@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Popup, Alert, and Frame Test</title>
+    <script>
+      function showAlert() {
+        alert("This is an alert box!");
+      }
+
+      function showPopup() {
+        document.getElementById("popup").style.display = "block";
+      }
+
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+      }
+    </script>
+    <style>
+      #popup {
+        display: none;
+        position: fixed;
+        top: 30%;
+        left: 30%;
+        width: 300px;
+        padding: 20px;
+        background-color: #f4f4f4;
+        border: 2px solid #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Handle Alerts and Frames</h2>
+
+    <button onclick="showAlert()">Show Alert</button>
+    <button onclick="showPopup()">Show Popup</button>
+
+    <div id="popup">
+      <p>This is a custom popup!</p>
+      <button onclick="closePopup()">Close</button>
+    </div>
+
+    <iframe
+      srcdoc="<p>This is content inside an iframe</p>"
+      width="100%"
+      height="100"
+      id="testFrame"
+    ></iframe>
+  </body>
+</html>

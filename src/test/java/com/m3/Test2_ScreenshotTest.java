@@ -34,15 +34,15 @@ public class Test2_ScreenshotTest {
         File src = ts.getScreenshotAs(OutputType.FILE);
 
         // Create file name with timestamp
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
-        String destPath = "screenshot_" + timestamp + ".png";
+
+        String destPath = "screenshot_" + ".png";
 
         // Save the screenshot file
         Files.copy(src.toPath(), Paths.get(destPath));
         System.out.println("Screenshot saved to: " + destPath);
     }
 
-    //@AfterAll
+    // @AfterAll
     public static void tearDown() {
         if (driver != null) {
             driver.quit();
