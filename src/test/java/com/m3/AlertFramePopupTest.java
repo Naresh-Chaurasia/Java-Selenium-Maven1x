@@ -24,18 +24,25 @@ public class AlertFramePopupTest {
     @Test
     public void testAlert() {
         driver.findElement(By.xpath("//button[text()='Show Alert']")).click();
+        // Transwer window focus to alert
         Alert alert = driver.switchTo().alert();
         System.out.println("Alert text: " + alert.getText());
         DemoHelper.pause();
-        alert.accept();
+        alert.accept(); // Perform Ok
     }
 
     @Test
     public void testPopup() {
         driver.findElement(By.xpath("//button[text()='Show Popup']")).click();
+
         WebElement popup = driver.findElement(By.id("popup"));
+
+        boolean val = popup.isDisplayed();
+
         Assertions.assertTrue(popup.isDisplayed(), "Popup should be visible");
+
         DemoHelper.pause();
+
         driver.findElement(By.xpath("//div[@id='popup']//button[text()='Close']")).click();
     }
 
@@ -44,6 +51,10 @@ public class AlertFramePopupTest {
         driver.switchTo().frame("testFrame");
         WebElement para = driver.findElement(By.tagName("p"));
         Assertions.assertEquals("This is content inside an iframe", para.getText());
+
+        // para.getAttribute("srcdoc");
+        System.out.println("Iframe srcdoc: " + para.getAttribute("srcdoc"));
+
         driver.switchTo().defaultContent();
     }
 
